@@ -1,0 +1,39 @@
+{% extends 'travels_notebook/html/base.html' %}
+{% load socialaccount %}
+
+{% block header %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        {% include 'travels_notebook/html/navbar.html' %}
+    </nav>
+{% endblock header %}
+
+{% block content %}
+    <section class="show_remembers">
+        <div class="div_avatar">
+            <img style="height: 185px;width:185px;" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
+            <p class="p_name">{{ user.first_name }}{{ user_login }}</p>
+            <p class="p_name">{{ user.last_name }}</p>
+        </div>
+
+        <div class="div_form">
+            <a href="{% url 'form-page' 'None' %}">Add Remember</a>
+        </div>
+
+        <div class="show_data">
+            <p class="p_name">You don't have any memories</p>
+            <div class="list_remember">
+                {% for obj in object_list %}
+                    <div class="div_one_obj">
+                        <h4 class="name">{{ obj.name }}</h4>
+                        <h5 class="time_update">{{ obj.time_update }}</h5>
+                        <p class="description">{{ obj.description|linebreaks|truncatewords:50 }}</p>
+                        <div class="add_data">
+                            <a href="{{ obj.get_absolute_url }}">Читать дальше</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% include 'travels_notebook/html/paganator_page.html' %}
+    </section>
+{% endblock content %}

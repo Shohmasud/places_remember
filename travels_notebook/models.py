@@ -11,3 +11,7 @@ class Places(models.Model):
     slug = models.SlugField(max_length=500, unique=True,
                             db_index=True, verbose_name="URL")
     description = models.TextField(verbose_name="TEXT REMEMBER")
+    time_create = models.DateTimeField(auto_now_add=True,
+                                       verbose_name="Time create")
+    time_update = models.DateTimeField(auto_now=True,
+                                       verbose_name="Time update")

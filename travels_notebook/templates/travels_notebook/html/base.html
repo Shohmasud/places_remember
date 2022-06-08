@@ -11,7 +11,13 @@
 </head>
 <body class="background_base">
 {% block grid %}
-    {% block header %}{% endblock header %}
+    {% block header %}
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">PLace_RemembeR</a>
+            </nav>
+        </header>
+    {% endblock header %}
     {% block content %}{% endblock content %}
     {% block footer %}{% include 'travels_notebook/html/footer.html' %}{% endblock footer %}
 {% endblock grid %}

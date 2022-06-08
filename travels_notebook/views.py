@@ -3,8 +3,10 @@ from django.shortcuts import render, redirect
 from django.urls import NoReverseMatch
 
 from travels_notebook.utils import DataMixin
-from travels_notebook.forms import AddPostForm, SearchForms
-from django.views.generic import View, ListView, DetailView, CreateView
+from travels_notebook.forms import AddPostForm,\
+    SearchForms
+from django.views.generic import View, ListView,\
+    DetailView, CreateView
 from travels_notebook.models import Places, User
 
 
@@ -32,15 +34,17 @@ class PlacesList(ListView):
 
 
 class ShowPostRemember(DetailView):
-    """This class displays the key element in detail"""
+    """This class displays the key
+     element in detail"""
 
     model = Places
-    template_name = 'travels_notebook/html/description.html'
+    template_name = 'travels_notebook/html/' \
+                    'description.html'
 
 
 class GetMap(DataMixin, CreateView):
-    """This class gets the address from the user and you
-     have them on the map"""
+    """This class gets the address from the
+     user and you have them on the map"""
 
     form_class = SearchForms
     template_name = 'travels_notebook/html/form_map.html'

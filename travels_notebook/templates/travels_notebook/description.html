@@ -1,0 +1,24 @@
+{% extends 'travels_notebook/html/base.html' %}
+{% load socialaccount %}
+
+{% block header %}
+    {% include 'travels_notebook/html/navbar.html' %}
+{% endblock header %}
+
+{% block content %}
+    <section class="text">
+        <div class="all_date">
+            <div class="show_data">
+                <p class="p_name">You don't have any memories</p>
+                <div class="list_remember">
+                    <div class="div_one_obj">
+                        <h4 class="name">{{ object.name }}</h4>
+                        <div class="add_data">
+                            <p class="text">444{{ object.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

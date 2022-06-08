@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'db_places_remember',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'apirest',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     },
 }

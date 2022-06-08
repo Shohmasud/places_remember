@@ -11,8 +11,8 @@
     <section class="show_remembers">
         <div class="div_avatar">
             <img style="height: 185px;width:185px;" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
-            <p class="p_name">{{ user.first_name }}{{ user_login }}</p>
-            <p class="p_name">{{ user.last_name }}</p>
+            <li class="p_name">{{ user.first_name }}{{ user_login }}</li>
+            <li class="p_name">{{ user.last_name }}</li>
         </div>
 
         <div class="div_form">

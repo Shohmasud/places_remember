@@ -16,7 +16,6 @@ class DataMixin(CreateView):
         lat = location.lat
         lng = location.lng
         country = location.country
-        print(country)
         if lat == None or lng == None:
             return None
 

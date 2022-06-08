@@ -7,4 +7,6 @@ from django.contrib.auth.models import User
 
 class Places(models.Model):
     name = models.CharField(max_length=500, blank=True,
-                            verbose_name="Places name")
+                            verbose_name="NAME")
+    slug = models.SlugField(max_length=500, unique=True,
+                            db_index=True, verbose_name="URL")

@@ -10,3 +10,4 @@ class Places(models.Model):
                             verbose_name="NAME")
     slug = models.SlugField(max_length=500, unique=True,
                             db_index=True, verbose_name="URL")
+    description = models.TextField(verbose_name="TEXT REMEMBER")

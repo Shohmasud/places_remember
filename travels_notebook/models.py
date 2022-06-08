@@ -17,3 +17,6 @@ class Places(models.Model):
                                        verbose_name="TIME UPDATE")
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              default=None, verbose_name="USERS")
+
+    def __str__(self):
+        return self.name

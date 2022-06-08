@@ -52,10 +52,29 @@ class GetMap(DataMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        address_map = self.get_address_map(form.cleaned_data['name'])
+        address_map = self.get_address_map(
+            form.cleaned_data['name'])
         if address_map is None:
-            return HttpResponse('ENTER THE ADDRESS OF THE FIELD CORRECTLY!')
+            return HttpResponse('ENTER THE ADDRESS OF '
+                                'THE FIELD CORRECTLY!')
         try:
             return redirect('form-page', slug=form.cleaned_data['name'])
         except NoReverseMatch:
-            return HttpResponse('THE ADDRESS FIELD ALLOWS LATIN LETTERS, NUMBER, UNDERSCORES, SPACES')
+            return HttpResponse('THE ADDRESS FIELD ALLOWS LATIN '
+                                'LETTERS, NUMBER, UNDERSCORES, SPACES')
+
+
+class SaveForm(CreateView):
+    """This class saves the correct address from
+    the map along with the rest of the data"""
+
+    form_class = AddPostForm
+    template_name = 'travels_notebook/html/' \
+                    'form_description.html'
+
+    def form_valid(self, form):
+        form.cleaned_data['relete_user'] = User.objects.get(
+            username=User.objects.all().last())
+        form.cleaned_data['name'] = self.kwargs['slug']
+        Places.objects.create(**form.cleaned_data).save()
+        return redirect('form-page', slug='None')

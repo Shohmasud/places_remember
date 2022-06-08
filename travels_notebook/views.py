@@ -20,4 +20,4 @@ class PlacesList(ListView):
     template_name = 'travels_notebook/html/home.html'
 
     def get_queryset(self):
-        return Places.objects.filter(relete_user=User.objects.all().last())
+        return Places.objects.filter(user=User.objects.all().last())

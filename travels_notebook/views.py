@@ -73,7 +73,7 @@ class SaveForm(CreateView):
                     'form_description.html'
 
     def form_valid(self, form):
-        form.cleaned_data['relete_user'] = User.objects.get(
+        form.cleaned_data['user'] = User.objects.get(
             username=User.objects.all().last())
         form.cleaned_data['name'] = self.kwargs['slug']
         Places.objects.create(**form.cleaned_data).save()

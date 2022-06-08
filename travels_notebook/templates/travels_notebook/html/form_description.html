@@ -1,0 +1,14 @@
+{% extends 'travels_notebook/html/base.html' %}
+{% load socialaccount %}
+{% block header %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        {% include 'travels_notebook/html/navbar.html' %}
+    </nav>
+{% endblock header %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'travels_notebook/html/form.html' %}
+        <button type="submit" class="btn btn-primary" id="example_2_1">SAVE</button>
+    </form>
+{% endblock content %}

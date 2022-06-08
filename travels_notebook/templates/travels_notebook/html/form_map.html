@@ -1,0 +1,25 @@
+{% extends 'travels_notebook/html/base.html' %}
+{% load socialaccount %}
+{% block header %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        {% include 'travels_notebook/html/navbar.html' %}
+        <div>
+            <form class="form-inline my-2 my-lg-0" method="POST">
+                {% for form in form %}
+                    {% csrf_token %}
+                    <div class="form-error">{{ form_description.non_field_errors }}</div>
+                    <p><label class="form-label" for="{{ form.id_for_label }}">{{ form.label }}: </label>{{ form }}</p>
+                    <button type="submit" class="btn btn-primary" id="example_2_1">Search</button>
+                    <div class="form-error">{{ form.errors }}</div>
+                    {% if slug != 'None' %}
+                        <a href="{% url 'form-description' slug %}">ADD DESCRIPTION</a>
+                    {% endif %}
+                {% endfor %}
+            </form>
+        </div>
+    </nav>
+{% endblock header %}
+{% block content %}
+    <div class="map">{{ map | safe }}</div>
+{% endblock content %}
+{% include 'travels_notebook/html/footer.html' %}

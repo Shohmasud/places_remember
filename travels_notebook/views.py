@@ -15,9 +15,17 @@ class LoginUsers(View):
 class PlacesList(ListView):
     """This class creates a paginator and
     filters the places visited by the user"""
+
     paginate_by = 3
     model = Places
     template_name = 'travels_notebook/html/home.html'
 
     def get_queryset(self):
         return Places.objects.filter(user=User.objects.all().last())
+
+
+class ShowPostRemember(DetailView):
+    """This class displays the key element in detail"""
+
+    model = Places
+    template_name = 'travels_notebook/html/description.html'

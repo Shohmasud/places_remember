@@ -8,7 +8,7 @@
                 {% for form in form %}
                     {% csrf_token %}
                     <div class="form-error">{{ form_description.non_field_errors }}</div>
-                    <p><label class="form-label" for="{{ form.id_for_label }}">{{ form.label }}: </label>{{ form }}</p>
+                    <p><label class="form-label" for="{{ form.id_for_label }}">{{ form.label }} </label>{{ form }}</p>
                     <button type="submit" class="btn btn-primary" id="example_2_1">Search</button>
                     <div class="form-error">{{ form.errors }}</div>
                     {% if slug != 'None' %}
